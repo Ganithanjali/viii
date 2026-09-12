@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIII Mathematics – Unexpected Challenge</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f5f7fb;margin:0;padding:20px;color:#1f2937}
+.wrap{max-width:760px;margin:auto;background:white;padding:28px;border-radius:16px;box-shadow:0 4px 18px #0001}
+h1{margin-top:0;font-size:26px}
+.sub{color:#667085}
+.q{padding:18px 0;border-top:1px solid #e5e7eb}
+label{display:block;padding:10px;margin:7px 0;border:1px solid #d9dee8;border-radius:9px;cursor:pointer}
+label:hover{background:#f7f9fc}
+button{background:#2563eb;color:white;border:0;padding:13px 20px;border-radius:9px;font-size:16px;cursor:pointer}
+#result{margin-top:20px;font-size:20px;font-weight:bold}
+.explain{margin-top:8px;font-size:14px;color:#475467}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>VIII Mathematics – Unexpected Challenge</h1>
+<p class="sub">25 MCQs • Choose one answer for each question • Click Submit to see your score.</p>
+<form id="quiz"></form>
+<button type="button" onclick="submitQuiz()">Submit Quiz</button>
+<div id="result"></div>
+</div>
+<script>
+const qs=[
+["Using (a+b)²=a²+2ab+b², find 1007².",["1,014,049","1,014,014","1,014,000","1,007,049"],0],
+["Without directly multiplying, find 1004²−996².",["16,000","8,000","15,936","64,000"],0],
+["Which identity gives the square of a difference?",["(a−b)²=a²−2ab+b²","(a−b)²=a²+2ab+b²","(a+b)²=a²−2ab+b²","(a−b)²=a²−b²"],0],
+["Find 997² using a suitable identity.",["994009","9940090","997009","996009"],0],
+["Compare 101×99 and 100×100.",["101×99 is larger","100×100 is larger","They are equal","Cannot be determined"],1],
+["Simplify: 6(a−3b)−2(2a−5b).",["2a−8b","2a−18b","8a−8b","2a+8b"],0],
+["Which expression means “five less than the square of the sum of x and 3”?",["(x+3)²−5","(x−3)²−5","(x+3)²+5","x²+3²−5"],0],
+["Simplify: (2a−3b)(4a²+6ab+9b²).",["8a³−27b³","8a³+27b³","8a³−18a²b+27b³","2a³−3b³"],0],
+["Find the product (2a²−3ax+x²)(4x²−ax).",["−2a³x+11a²x²−13ax³+4x⁴","2a³x+11a²x²−13ax³+4x⁴","−2a³x+11a²x²−11ax³+4x⁴","−2a³x+8a²x²−13ax³+4x⁴"],0],
+["Expand: (−2x²y)(3x²y−4xy²+5x−2y).",["−6x⁴y²+8x³y³−10x³y+4x²y²","−6x⁴y²−8x³y³−10x³y+4x²y²","6x⁴y²−8x³y³+10x³y−4x²y²","−6x³y²+8x²y³−10x²y+4xy²"],0],
+["Using an identity, find 96².",["9216","9116","9316","9604"],0],
+["Evaluate 104×96 using an identity.",["9984","9994","10004","9894"],0],
+["Find 1008².",["1,016,064","1,008,064","1,016,008","1,018,064"],0],
+["Evaluate 1003×997.",["999991","9999910","1000009","999009"],0],
+["Simplify: 9x−4y−5x+7y.",["4x+3y","14x+3y","4x−11y","14x−3y"],0],
+["Simplify: 7p−3q+2p+8q.",["9p+5q","5p+5q","9p−11q","9p−5q"],0],
+["Expand: 4(2x−3)+3(x+5).",["11x+3","11x−27","5x+3","8x+15"],0],
+["Expand: 6(2a+b)−3(a−2b).",["9a+12b","9a","15a+0b","12a+9b"],0],
+["Which is equal to (y−7)²?",["y²−14y+49","y²+14y+49","y²−7y+49","y²−49"],0],
+["If m−n=5 and mn=12, find m²+n².",["49","37","25","61"],0],
+["If r+s=15 and rs=26, find r²+s².",["173","225","199","251"],0],
+["Find (4p−q)².",["16p²−8pq+q²","16p²−4pq+q²","4p²−8pq+q²","16p²+8pq+q²"],0],
+["Simplify: (x+6)(x−2).",["x²+4x−12","x²+8x−12","x²+4x+12","x²−4x−12"],0],
+["Simplify: (3x+2)²−(3x−2)².",["24x","12x","4x","36x"],0],
+["Find (3x−4)(x+2).",["3x²+2x−8","3x²+6x−8","3x²−2x−8","3x²+2x+8"],0]
+];
+const form=document.getElementById("quiz");
+qs.forEach((q,i)=>{
+ let d=document.createElement("div"); d.className="q";
+ d.innerHTML=`<strong>${i+1}. ${q[0]}</strong>`+
+ q[1].map((o,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${String.fromCharCode(65+j)}) ${o}</label>`).join("");
+ form.appendChild(d);
+});
+function submitQuiz(){
+ let score=0;
+ qs.forEach((q,i)=>{
+   const picked=document.querySelector(`input[name=q${i}]:checked`);
+   if(picked && Number(picked.value)===q[2]) score++;
+ });
+ document.getElementById("result").textContent=`Your Score: ${score} / ${qs.length}`;
+ window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
